@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter,Route,Routes,Link } from 'react-router-dom';
+import HomeScreen from './Screens/homeScreen';
+import ProductScreen from './Screens/productScreen';
+import SignInScreen from './Screens/signInScreen';
+import CartScreen from './Screens/cartScreen'
+import RegisterScreen from './Screens/registerScreen';
 
+    
+      
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <BrowserRouter>
+    <div className="grid-container">
+      <header className="row">
+        <div>
+          <Link className="brand" to="/">
+          Green Owl Basket
+          </Link>
+        </div>
+        {/* <div>
+          < SearchBar />
+        </div> */}
+        <div>
+          <Link to="/cart">Cart</Link>
+          <Link to="/signin">Sign In</Link>
+        </div>
       </header>
+      <main>
+      <Routes>
+          <Route path= '/' element = {<HomeScreen/>} >
+          </Route>
+          <Route path ='/product/:id' element = { <ProductScreen/>} />
+          <Route path ='/cart' element ={<CartScreen/>}/>
+          <Route path ='/signin' element ={<SignInScreen/>}/>
+          <Route path ='/register' element ={<RegisterScreen/>}/>
+        </Routes>
+      </main>
+      <footer className="row center">Em Capstone Project</footer>
     </div>
+    </BrowserRouter>
   );
 }
 
 export default App;
+  
